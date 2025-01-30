@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload a PDF</title>
+</head>
+<body>
+    <h2>Upload a PDF</h2>
+    
+    <input type="file" id="pdfFile" accept="application/pdf">
+    
+    <button onclick="handleFileUpload()">Submit</button>
+    
+    <p id="message"></p>
+
+    <script>
+        function handleFileUpload() {
+            let fileInput = document.getElementById("pdfFile");
+            let file = fileInput.files[0];
+
+            if (!file) {
+                document.getElementById("message").innerText = "No file selected!";
+                return;
+            }
+
+            if (file.type !== "application/pdf") {
+                document.getElementById("message").innerText = "Please upload a PDF file!";
+                return;
+            }
+
+            document.getElementById("message").innerText = "PDF submitted successfully! (Nothing really happened though!)";
+        }
+    </script>
+</body>
+</html>

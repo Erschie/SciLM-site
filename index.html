@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload a PDF</title>
+  <meta charset="UTF-8">
+  <title>SciLM Research</title>
+  <script src="https://cdn.plot.ly/plotly-2.25.2.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .chart-container {
+      max-width: 700px;
+      margin: 0 auto;
+      margin-bottom: 40px;
+    }
+  </style>
 </head>
 <body>
-    <h2>Upload a PDF</h2>
-    
-    <input type="file" id="pdfFile" accept="application/pdf">
-    
-    <button onclick="handleFileUpload()">Submit</button>
-    
-    <p id="message"></p>
 
-    <script>
-        function handleFileUpload() {
-            let fileInput = document.getElementById("pdfFile");
-            let file = fileInput.files[0];
+  <h1>SciLM Test Site</h1>
+  <p style="text-align:center;">
+    This page is a work in progress.
+  </p>
 
-            if (!file) {
-                document.getElementById("message").innerText = "No file selected!";
-                return;
-            }
+  <div class="chart-container">
+    <h2>Scatter Plot Test</h2>
+    <div id="scatterPlot"></div>
+  </div>
 
-            if (file.type !== "application/pdf") {
-                document.getElementById("message").innerText = "Please upload a PDF file!";
-                return;
-            }
+  <div class="chart-container">
+    <h2>Bar Chart Test</h2>
+    <div id="barChart"></div>
+  </div>
 
-            document.getElementById("message").innerText = "PDF submitted successfully! (Nothing really happened though!)";
-        }
-    </script>
+  <script>
+    const trace1 = {
+      x: [1, 2, 3, 4, 5],
+      y: [1, 3, 2, 5, 4],
+      mode: 'markers+lines',
+      type: 'scatter',
+      name: 'Sample Data'
+    };
+
+    const layout1 = {
+      title: 'Sample Scatter Plot',
+      xaxis: { title: 'X Axis' },
+      yaxis: { title: 'Y Axis' }
+    };
+
+    Plotly.newPlot('scatterPlot', [trace1], layout1);
+
+    const trace2 = {
+      x: ['Category A', 'Category B', 'Category C', 'Category D'],
+      y: [20, 14, 23, 25],
+      type: 'bar'
+    };
+
+    const layout2 = {
+      title: 'Sample Bar Chart',
+      xaxis: { title: 'Categories' },
+      yaxis: { title: 'Values' }
+    };
+
+    Plotly.newPlot('barChart', [trace2], layout2);
+  </script>
 </body>
 </html>
